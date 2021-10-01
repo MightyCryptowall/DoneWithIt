@@ -10,24 +10,24 @@ import SafeViewAndroid from "./components/SafeViewAndroid";
 
 export default function App() {
   return (
-    <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
+    <SafeAreaView style={[styles.container, SafeViewAndroid.SafeAreaView]}>
       <Button 
-        color="orange"
+        color= "orange"
         title="Click Me" 
-        onPress={() => Alert.alert("My title", "My message", [
-          {text: "Yes", onPress: () => console.log("Yes")},
-          {text: "No", onPress: () => console.log("No")}
-        ])} 
+        onPress={() => 
+          Alert.prompt("My title", "My message", text => console.log(text))} 
       />
     </SafeAreaView>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
 });
