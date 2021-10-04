@@ -12,7 +12,9 @@ export default function App() {
           flex: 1,
           flexDirection: "row", // horizontal
           justifyContent: "center", // main
-          alignItems: "center" // secondary
+          alignItems: "center", // secondary
+          flexWrap: "wrap",
+          alignContent: "center"
         }}
       >
         <View
@@ -20,23 +22,36 @@ export default function App() {
             backgroundColor: "dodgerblue",
             width: 100,
             height: 300,
-            alignSelf: "flex-start"
           }}
-        ></View>
+        />
         <View
           style={{
             backgroundColor: "gold",
             width: 100,
-            height: 200,
+            height: 100,
           }}
-        ></View>
+       />
         <View
           style={{
             backgroundColor: "tomato",
             width: 100,
             height: 100,
           }}
-        ></View>
+        />
+        <View
+          style={{
+            backgroundColor: "grey",
+            width: 100,
+            height: 100,
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: "greenyellow",
+            width: 100,
+            height: 100,
+          }}
+        />
       </View>
     </SafeAreaView>
   );
