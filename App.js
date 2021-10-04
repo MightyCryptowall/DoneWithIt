@@ -1,37 +1,50 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  Dimensions,
-  StyleSheet,
-  SafeAreaView,
-  Button,
-  Alert,
-  View,
-} from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import SafeViewAndroid from "./components/SafeViewAndroid";
-import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
 
 export default function App() {
- let dimension = useDimensions();
- let orientation = useDeviceOrientation();
   return (
-    <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
-      <View style={{
-        backgroundColor: "dodgerblue",
-        width: "100%",
-        height: orientation.landscape ? "100%":"30%"
-      }}>
-        <Button title="hello" onPress={() =>  console.log(dimension.screen,orientation)}/>
+    <SafeAreaView style={[SafeViewAndroid.AndroidSafeArea, styles.container]}>
+      <View
+        style={{
+          backgroundColor: "#fff",
+          flex: 1,
+          flexDirection: "row", // horizontal
+          justifyContent: "center", // main
+          alignItems: "center" // secondary
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: "dodgerblue",
+            width: 100,
+            height: 300,
+            alignSelf: "flex-start"
+          }}
+        ></View>
+        <View
+          style={{
+            backgroundColor: "gold",
+            width: 100,
+            height: 200,
+          }}
+        ></View>
+        <View
+          style={{
+            backgroundColor: "tomato",
+            width: 100,
+            height: 100,
+          }}
+        ></View>
       </View>
     </SafeAreaView>
   );
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
   },
 });
