@@ -13,13 +13,23 @@ export default function App() {
           backgroundColor: "dodgerblue",
           width: 100,
           height: 100,
-          shadowColor: "grey", // for ios
-          shadowOffset: { width: 10, height: 10}, // for ios
-          shadowOpacity: 1, // for ios
-          shadowRadius: 10, // for ios
-          elevation: 20, // for andriod
+          padding: 20,
+          paddingHorizontal: 10,
+          paddingLeft: 30
         }}
-      ></View>
+      >
+        <View style={{
+          backgroundColor: "gold",
+          width: 50, 
+          height: 50
+        }}/>
+      </View>
+      <View style={{
+        backgroundColor: "tomato",
+        width: 100,
+        height: 100,
+        margin: 20,
+      }}/>
     </SafeAreaView>
   );
 }
