@@ -13,11 +13,11 @@ export default function App() {
           backgroundColor: "dodgerblue",
           width: 100,
           height: 100,
-          borderWidth: 10,
-          borderColor: "royalblue",
-          borderRadius: 50,
-          // borderTopWidth: 20,
-          // borderTopLeftRadius: 50
+          shadowColor: "grey", // for ios
+          shadowOffset: { width: 10, height: 10}, // for ios
+          shadowOpacity: 1, // for ios
+          shadowRadius: 10, // for ios
+          elevation: 20, // for andriod
         }}
       ></View>
     </SafeAreaView>
