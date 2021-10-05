@@ -8,8 +8,18 @@ import SafeViewAndroid from "./components/SafeViewAndroid";
 export default function App() {
   return (
     <SafeAreaView style={[SafeViewAndroid.AndroidSafeArea, styles.container]}>
-      {/* <WelcomeScreen/> */}
-      <ViewImageScreen/>
+      <View 
+        style={{
+          backgroundColor: "dodgerblue",
+          width: 100,
+          height: 100,
+          borderWidth: 10,
+          borderColor: "royalblue",
+          borderRadius: 50,
+          // borderTopWidth: 20,
+          // borderTopLeftRadius: 50
+        }}
+      ></View>
     </SafeAreaView>
   );
 }
@@ -17,6 +27,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
     // backgroundColor: "#fff",
   },
 });
