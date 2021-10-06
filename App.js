@@ -6,11 +6,13 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import SafeViewAndroid from "./app/components/SafeViewAndroid";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AppText from "./app/components/AppText";
+import AppButton from "./app/components/AppButton";
 
 export default function App() {
+  console.log("hello");
   return (
     <SafeAreaView style={[SafeViewAndroid.AndroidSafeArea, styles.container]}>
-      <AppText>I love React Native!</AppText>
+      <AppButton title="Login" onPress={() => console.log("Tapped")}/>
     </SafeAreaView>
   );
 }
