@@ -10,7 +10,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 export default function App() {
   return (
     <SafeAreaView style={[SafeViewAndroid.AndroidSafeArea, styles.container]}>
-      <MaterialCommunityIcons name="email" size={60} color="dodgerblue" />
+      <AppText>I love React Native!</AppText>
     </SafeAreaView>
   );
 }
