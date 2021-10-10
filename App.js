@@ -15,7 +15,8 @@ export default function App() {
     <SafeAreaView style={[SafeViewAndroid.AndroidSafeArea, styles.container]}>
       <StatusBar backgroundColor="black" style="light" />
       {/* <WelcomeScreen /> */}
-     <ListingDetailsScreen/>
+     {/* <ListingDetailsScreen/> */}
+     <ViewImageScreen />
     </SafeAreaView>
   );
 }
