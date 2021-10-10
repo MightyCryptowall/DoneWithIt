@@ -8,17 +8,14 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "./app/components/AppText";
 import AppButton from "./app/components/AppButton";
 import Card from "./app/components/Card";
+import ListingDetailsScreen from "./app/components/ListingDetailsScreen";
 
 export default function App() {
   return (
     <SafeAreaView style={[SafeViewAndroid.AndroidSafeArea, styles.container]}>
       <StatusBar backgroundColor="black" style="light" />
       {/* <WelcomeScreen /> */}
-      <Card
-        title="Red jacket for sale"
-        subtitle="$100"
-        image={require("./app/assets/jacket.jpg")}
-      />
+     <ListingDetailsScreen/>
     </SafeAreaView>
   );
 }
@@ -26,8 +23,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    paddingTop: 50,
+    // padding: 20,
+    // paddingTop: 50,
     backgroundColor:"#f8f4f4",
   },
 });
