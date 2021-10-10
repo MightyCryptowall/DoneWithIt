@@ -11,17 +11,22 @@ import AppButton from "./app/components/AppButton";
 export default function App() {
   console.log("hello");
   return (
+
+   
     <SafeAreaView style={[SafeViewAndroid.AndroidSafeArea, styles.container]}>
-      <AppButton title="Login" onPress={() => console.log("Tapped")}/>
+       <StatusBar
+     backgroundColor="black"
+     style="light"
+   />
+      <WelcomeScreen/>
     </SafeAreaView>
+
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-    // backgroundColor: "#fff",
+    flex: 1
   },
 });
