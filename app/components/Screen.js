@@ -9,9 +9,11 @@ function Screen({ children, style }) {
     <View style={{ flex: 1 }}>
       <View style={styles.statusBarIOS} />
 
-      <SafeAreaView style={[styles.screen, style]}>
+      <SafeAreaView style={[styles.screen]}>
+        <View style={style}>
         <StatusBar backgroundColor={colors.white} style="dark" />
         {children}
+        </View>
       </SafeAreaView>
     </View>
   );
