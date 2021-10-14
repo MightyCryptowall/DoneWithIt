@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -14,16 +14,33 @@ import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
+import { TextInput } from "react-native";
 
 export default function App() {
+  const [firstName, setFirstName] = useState("");
+
   return (
-    <ListingsScreen/>
+    // <ListingsScreen/>
     // <AccountScreen />
     // <MessagesScreen />
     //   {/* <WelcomeScreen /> */}
     //  {/* <ListingDetailsScreen/> */}
     //  {/* <ViewImageScreen /> */}
-     
+    <Screen>
+      <Text>{firstName}</Text>
+      <TextInput
+        // keyboardType = "numeric"
+        // clearButtonMode="always" //only works on ios
+        secureTextEntry
+        onChangeText={text => setFirstName(text)}
+          placeholder="First Name"
+          style={{
+            borderBottomColor: "#ccc",
+            borderBottomWidth: 1,
+          }}
+      />
+    </Screen>
+
 
   );
 }
