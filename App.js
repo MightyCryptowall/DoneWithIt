@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Switch, Text, View } from "react-native";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -20,27 +20,11 @@ import AppTextInput from "./app/components/AppTextInput";
 export default function App() {
   const [firstName, setFirstName] = useState("");
 
+  const [isNew, setIsNew] = useState(false);
+
   return (
-    // <ListingsScreen/>
-    // <AccountScreen />
-    // <MessagesScreen />
-    //   {/* <WelcomeScreen /> */}
-    //  {/* <ListingDetailsScreen/> */}
-    //  {/* <ViewImageScreen /> */}
     <Screen>
-      <AppTextInput placeholder="Username" icon="email" />
-      {/* <Text>{firstName}</Text>
-      <TextInput
-        // keyboardType = "numeric"
-        // clearButtonMode="always" //only works on ios
-        secureTextEntry
-        onChangeText={text => setFirstName(text)}
-          placeholder="First Name"
-          style={{
-            borderBottomColor: "#ccc",
-            borderBottomWidth: 1,
-          }}
-      /> */}
+        <Switch value={isNew} onValueChange={(newValue) => setIsNew(newValue)} />
     </Screen>
 
 
