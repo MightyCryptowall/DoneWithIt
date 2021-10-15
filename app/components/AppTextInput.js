@@ -1,7 +1,6 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TextInput } from "react-native-gesture-handler";
 import colors from "../config/colors";
 
 function AppTextInput({ icon, ...otherProps }) {
@@ -33,7 +32,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   textInput: {
-    color: colors.dark,
+    flex: 1,
+    width: "100%",
     fontSize: 18,
     ...Platform.select({
       ios: {
