@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import React from "react";
+import { View } from "react-native";
 
 function AppForm({ initialValues, onSubmit, validationSchema, children }) {
   return (
@@ -8,7 +9,7 @@ function AppForm({ initialValues, onSubmit, validationSchema, children }) {
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      {() => <>{children}</>}
+      {() => <View style={{flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between"}}>{children}</View>}
     </Formik>
   );
 }

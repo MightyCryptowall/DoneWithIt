@@ -1,55 +1,73 @@
 import React, { useState } from "react";
-import { Button, FlatList, Modal, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  Modal,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 import AppText from "./AppText";
 import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
-
+function AppPicker({
+  icon,
+  items,
+  numberOfColumns = 1,
+  onSelectItem,
+  PickerItemComponent = PickerItem,
+  placeholder,
+  selectedItem,
+  width = "100%",
+}) {
   const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <>
-    <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-    <View style={styles.container}>
-      {icon && (
-        <MaterialCommunityIcons
-          name={icon}
-          size={25}
-          color={colors.medium}
-          style={styles.icon}
-        />
-      )}
+      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
+        <View style={[styles.container, { width }]}>
+          {icon && (
+            <MaterialCommunityIcons
+              name={icon}
+              size={25}
+              color={colors.medium}
+              style={styles.icon}
+            />
+          )}
 
-      {selectedItem ? (
-         <AppText style={styles.text}>{ selectedItem.label }</AppText>
-      ): (
-        <AppText style={styles.placeholder}>{ placeholder }</AppText>
-      )}
-   
-    <MaterialCommunityIcons
-        name="chevron-down"
-        size={25}
-        color={colors.medium}
-    />
-    </View>
-    </TouchableWithoutFeedback>
-    <Modal visible={modalVisible} animationType="slide">
+          {selectedItem ? (
+            <AppText style={styles.text}>{selectedItem.label}</AppText>
+          ) : (
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
+          )}
+
+          <MaterialCommunityIcons
+            name="chevron-down"
+            size={25}
+            color={colors.medium}
+          />
+        </View>
+      </TouchableWithoutFeedback>
+      <Modal visible={modalVisible} animationType="slide" >
         <Button title="Close" onPress={() => setModalVisible(false)} />
-        <FlatList 
+        <FlatList
           data={items}
-          keyExtractor={item => item.value.toString()}
-          renderItem={({item}) => 
-            <PickerItem
+          keyExtractor={(item) => item.value.toString()}
+          numColumns={numberOfColumns}
+          renderItem={({ item }) => (
+            <PickerItemComponent
+              item={item}
               label={item.label}
               onPress={() => {
                 setModalVisible(false);
                 onSelectItem(item);
               }}
             />
-          }
+          )}
         />
-    </Modal>
+      </Modal>
     </>
   );
 }
@@ -59,7 +77,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
   },
@@ -70,8 +87,8 @@ const styles = StyleSheet.create({
     color: colors.medium,
     flex: 1,
   },
-  text:{
-    flex:1,
+  text: {
+    flex: 1,
   },
 });
 

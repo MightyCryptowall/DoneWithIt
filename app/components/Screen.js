@@ -10,11 +10,12 @@ function Screen({ children, style }) {
       <View style={styles.statusBarIOS} />
 
       <SafeAreaView style={[styles.screen]}>
-        <View style={style}>
+        <View style={[style, styles.view]}>
         <StatusBar backgroundColor={colors.white} style="dark" />
         {children}
         </View>
       </SafeAreaView>
+      
     </View>
   );
 }
@@ -31,6 +32,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     paddingTop: Platform.OS === "ios" ? Constants.statusBarHeight : 0,
     height: Platform.OS === "ios" ? Constants.statusBarHeight : 0,
+  },
+  view: {
+    flex: 1,
   },
 });
 
