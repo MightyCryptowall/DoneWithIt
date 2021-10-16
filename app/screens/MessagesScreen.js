@@ -14,8 +14,8 @@ const initialMessages = [
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita praesentium soluta ea aperiam, at eligendi autem odit iure. Temporibus adipisci aut officiis, dolorum amet eligendi facilis beatae possimus omnis nisi, incidunt illo dolores commodi nulla suscipit repellat eum. Illo saepe in perspiciatis adipisci. Nulla dolorum deserunt optio porro, repudiandae corporis.",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita praesentium soluta ea aperiam, at eligendi autem odit iure. Temporibus adipisci aut officiis, dolorum amet eligendi facilis beatae possimus omnis nisi, incidunt illo dolores commodi nulla suscipit repellat eum. Illo saepe in perspiciatis adipisci. Nulla dolorum deserunt optio porro, repudiandae corporis.",
     image: require("../assets/mosh.jpg"),
   },
 ];
