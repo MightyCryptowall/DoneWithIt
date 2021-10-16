@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import ListingEditScreen from "./app/screens/ListingEditScreen";
-
+import Screen from "./app/components/Screen";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 
 export default function App() {
+  const requestPermission = async () => {
+    // const { granted } = await Permissions.askAsync(
+    //   Permissions.MEDIA_LIBRARY,
+    //   Permissions.LOCATION_BACKGROUND
+    // );
+    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
+    if (!granted) alert("You need to enable permission to access the library.");
+  };
 
-  return (
-    <ListingEditScreen/>
-  );
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
+  return <Screen></Screen>;
 }
 
 const styles = StyleSheet.create({
