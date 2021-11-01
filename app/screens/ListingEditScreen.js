@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from "yup";
+
 import CategoryPickerItem from '../components/CategoryPickerItem';
 import FormImagePicker from '../components/FormImagePicker';
 
@@ -13,6 +14,7 @@ import {
 } from "../components/forms"
 import AppFormPicker from '../components/forms/AppFormPicker';
 import Screen from '../components/Screen';
+import useLocation from '../hooks/useLocation';
 
 
 const validationSchema = Yup.object().shape({
@@ -37,6 +39,9 @@ const categories = [
 
 
 function ListingEditScreen(props) {
+
+   const location = useLocation();
+
     return (
         <Screen style={styles.container}>
             <AppForm 
@@ -47,7 +52,7 @@ function ListingEditScreen(props) {
                     category: "",
                     images:[],
                 }}
-                onSubmit={(values) => console.log(values)}
+                onSubmit={(values) => console.log(location)}
                 validationSchema={validationSchema}
             >
                 <FormImagePicker name="images" />
