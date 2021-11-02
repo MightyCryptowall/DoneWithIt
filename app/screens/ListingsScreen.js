@@ -19,6 +19,12 @@ const listings = [
         price: 1000,
         image: require("../assets/jacket.jpg")
     },
+    {
+        id: 3,
+        title: "Sun glass for sale.",
+        price: 1000,
+        image: require("../assets/jacket.jpg")
+    },
 ];
 
 function ListingsScreen(props) {
