@@ -24,7 +24,7 @@ const headerHeight = 48;
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: Constants.statusBarHeight,
+    // paddingTop: Constants.statusBarHeight,
     flex: 1,
   },
   statusBarIOS: {
