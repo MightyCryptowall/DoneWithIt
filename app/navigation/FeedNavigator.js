@@ -10,14 +10,11 @@ const FeedNavigator = () => (
     <Stack.Navigator mode="modal">
         <Stack.Screen name="Listings" component={ListingsScreen} 
             options ={{
-                headerTitleAlign: "center"
+                headerTitleAlign: "center",
+                headerShown: false,
             }}
         />
-        <Stack.Screen name="ListingDetails" component={ListingDetailsScreen}
-            // options ={{
-            //     headerShown: false
-            // }}
-        />
+        <Stack.Screen name="ListingDetails" component={ListingDetailsScreen}/>
     </Stack.Navigator>
 )
 
