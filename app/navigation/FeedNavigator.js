@@ -6,18 +6,6 @@ import ListingDetailsScreen from "../screens/ListingDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
-const config = {
-    animation: 'spring',
-    config: {
-      stiffness: 1000,
-      damping: 500,
-      mass: 3,
-      overshootClamping: true,
-      restDisplacementThreshold: 0.01,
-      restSpeedThreshold: 0.01,
-    },
-  };
-
 const FeedNavigator = () => (
     <Stack.Navigator mode="modal">
         <Stack.Screen name="Listings" component={ListingsScreen} 

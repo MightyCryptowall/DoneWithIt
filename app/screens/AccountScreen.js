@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import Icon from '../components/Icon';
@@ -20,11 +21,15 @@ const menuItems = [
         icon: {
             name: "email",
             backgroundColor: colors.secondary,
-        }
+        },
+        targetScreen: "Messages"
     },
 ]
 
 function AccountScreen(props) {
+
+    const navigation = useNavigation();
+
     return (
         <Screen style={styles.screen}>
             <View style={styles.container}>
@@ -45,6 +50,7 @@ function AccountScreen(props) {
                         IconComponent={
                             <Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />
                         }
+                        onPress= {() => navigation.navigate(item.targetScreen)}
                     />
                     }
                 />
