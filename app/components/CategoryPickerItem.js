@@ -5,8 +5,8 @@ import Icon from "./Icon";
 
 function CategoryPickerItem({ item, onPress }) {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={onPress}>
+
+      <TouchableOpacity style={styles.container} onPress={onPress}>
         <Icon
           backgroundColor={item.backgroundColor}
           name={item.icon}
@@ -14,7 +14,7 @@ function CategoryPickerItem({ item, onPress }) {
         />
         <AppText style={styles.label}>{item.label}</AppText>
       </TouchableOpacity>
-    </View>
+
   );
 }
 
