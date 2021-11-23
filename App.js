@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, StyleSheet, Text } from "react-native";
 import {
   createNativeFeedNavigator,
@@ -11,6 +11,7 @@ import {
   useRoute,
 } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import jwtDecode from "jwt-decode";
 
 import Screen from "./app/components/Screen";
 // import AuthNavigator from "./app/navigation/AuthNavigator";
@@ -21,12 +22,25 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import AuthContext from "./app/auth/context";
+import authStorage from "./app/auth/storage";
 
 export default function App() {
   // const netInfo = useNetInfo();
 
 
   const [user, setUser] = useState();
+
+  const restoreToken = async () => {
+    const token = await authStorage.getToken();
+    if(!token) return;
+    setUser(jwtDecode(token));
+
+  }
+
+  useEffect(() => {
+    restoreToken()
+  }, []);
+
 
   return (
     <AuthContext.Provider value={{user, setUser}}>
