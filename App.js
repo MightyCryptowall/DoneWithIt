@@ -12,6 +12,7 @@ import {
 } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import jwtDecode from "jwt-decode";
+import AppLoading from "expo-app-loading";
 
 import Screen from "./app/components/Screen";
 // import AuthNavigator from "./app/navigation/AuthNavigator";
@@ -27,25 +28,29 @@ import authStorage from "./app/auth/storage";
 export default function App() {
   // const netInfo = useNetInfo();
 
-
   const [user, setUser] = useState();
+  const [isReady, setIsReady] = useState(false);
 
   const restoreToken = async () => {
     const token = await authStorage.getToken();
-    if(!token) return;
+    if (!token) return;
     setUser(jwtDecode(token));
+  };
 
+  if (!isReady) {
+    return (
+      <AppLoading
+        startAsync={restoreToken}
+        onFinish={() => setIsReady(true)}
+        onError={console.warn}
+      />
+    );
   }
 
-  useEffect(() => {
-    restoreToken()
-  }, []);
-
-
   return (
-    <AuthContext.Provider value={{user, setUser}}>
+    <AuthContext.Provider value={{ user, setUser }}>
       <NavigationContainer theme={navigationTheme}>
-        {user ? <AppNavigator/> : <AuthNavigator />}
+        {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
       {/* <OfflineNotice /> */}
     </AuthContext.Provider>
