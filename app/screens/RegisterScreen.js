@@ -3,12 +3,17 @@ import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
-import { AppForm, AppFormField, ErrorMessage, SubmitButton } from "../components/forms";
+import {
+  AppForm,
+  AppFormField,
+  ErrorMessage,
+  SubmitButton,
+} from "../components/forms";
 import usersApi from "../api/users";
 import authApi from "../api/auth";
 import useAuth from "../auth/useAuth";
-
-
+import useApi from "../hooks/useApi";
+import ActivityIndicator from "../components/ActivityIndicator";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
@@ -17,16 +22,18 @@ const validationSchema = Yup.object().shape({
 });
 
 function RegisterScreen() {
+  const registerApi = useApi(usersApi.register);
+  const loginApi = useApi(authApi.login);
 
   const auth = useAuth();
-
   const [error, setError] = useState();
-  const handleSubmit = async (userInfo) => {
-    const result = await usersApi.register(userInfo);
 
-    if(!result.ok) {  
-      if(result.data) setError(result.data.error);
-      else{
+  const handleSubmit = async (userInfo) => {
+    const result = await registerApi.request(userInfo);
+
+    if (!result.ok) {
+      if (result.data) setError(result.data.error);
+      else {
         setError("An unexpected error occurred.");
         console.log(result);
       }
@@ -34,16 +41,18 @@ function RegisterScreen() {
     }
 
     console.log(userInfo);
-    const { data: authToken } = await authApi.login(
+    const { data: authToken } = await loginApi.request(
       userInfo.email,
       userInfo.password
     );
 
     auth.logIn(authToken);
-  }
-
+  };
   return (
+    <>
+    <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
     <Screen style={styles.container}>
+     
       <AppForm
         initialValues={{ name: "", email: "", password: "" }}
         onSubmit={handleSubmit}
@@ -77,6 +86,7 @@ function RegisterScreen() {
         <SubmitButton title="Register" />
       </AppForm>
     </Screen>
+    </>
   );
 }
 

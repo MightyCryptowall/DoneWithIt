@@ -27,6 +27,8 @@ function ListingsScreen(props) {
   
 
   return (
+    <>
+    <ActivityIndicator visible={loading}/>
     <Screen style={styles.screen}>
       {
         error && <>
@@ -34,7 +36,7 @@ function ListingsScreen(props) {
           <AppButton title="Retry" onPress={loadListings} />
         </>
       }
-      <ActivityIndicator visible={loading}/>
+      
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
@@ -51,6 +53,7 @@ function ListingsScreen(props) {
         showsVerticalScrollIndicator={false}
       />
     </Screen>
+    </>
   );
 }
 
