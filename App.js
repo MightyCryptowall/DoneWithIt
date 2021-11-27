@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, StyleSheet, Text } from "react-native";
 import {
   createNativeFeedNavigator,
@@ -11,7 +11,6 @@ import {
   useRoute,
 } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import jwtDecode from "jwt-decode";
 import AppLoading from "expo-app-loading";
 
 import Screen from "./app/components/Screen";
@@ -31,16 +30,15 @@ export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
-  const restoreToken = async () => {
-    const token = await authStorage.getToken();
-    if (!token) return;
-    setUser(jwtDecode(token));
+  const restoreUser = async () => {
+    const user = await authStorage.getUser();
+    if (user) setUser(user);
   };
 
   if (!isReady) {
     return (
       <AppLoading
-        startAsync={restoreToken}
+        startAsync={restoreUser}
         onFinish={() => setIsReady(true)}
         onError={console.warn}
       />
