@@ -3,15 +3,16 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
+import { Platform } from "react-native";
 
 import AccountScreen from "../screens/AccountScreen";
+import expoPushTokens from "../api/expoPushTokens";
 import ListingEditScreen from "../screens/ListingEditScreen";
 import ListingsScreen from "../screens/ListingsScreen";
 import FeedNavigator from "./FeedNavigator";
 import AccountNavigator from "./AccountNavigator";
 import NewListingButton from "./NewListingButton";
 import routes from "./routes";
-import { Platform } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +33,6 @@ async function registerForPushNotificationsAsync() {
       return;
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
   } else {
     alert('Must use physical device for Push Notifications');
   }
@@ -55,11 +55,12 @@ async function registerForPushNotificationsAsync() {
 
 const AppNavigator = () => {
 
-  const [expoPushToken, setExpoPushToken] = useState("");
   
 
   useEffect(() => {
-    registerForPushNotificationsAsync()
+    registerForPushNotificationsAsync().then(token => {
+      expoPushTokens.register(token);
+    })
   },[]);
 
 
